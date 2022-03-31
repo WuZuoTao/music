@@ -1,19 +1,36 @@
+// 引入封装好的axios
+import request from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    bannerImage:[],
+    personalizedList:[]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.indexBannerImage()
+    this.indexpersonalizedList()
   },
-
+  // 轮播图API请求
+  indexBannerImage(){
+    request('/api/v2/banner/get',{clientType: 'iphone'}).then(res =>{
+      this.setData({
+        bannerImage: res.banners
+      })
+    })
+  },
+  indexpersonalizedList(){
+    request('/api/personalized/playlist',{limit:20}).then(res =>{
+      this.setData({
+        personalizedList:res.result
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
