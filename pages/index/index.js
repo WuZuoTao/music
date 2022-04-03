@@ -7,7 +7,8 @@ Page({
    */
   data: {
     bannerImage:[],
-    personalizedList:[]
+    personalizedList:[],
+    topList:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -15,6 +16,7 @@ Page({
   onLoad: function (options) {
     this.indexBannerImage()
     this.indexpersonalizedList()
+    this.indexTopList()
   },
   // 轮播图API请求
   indexBannerImage(){
@@ -24,6 +26,29 @@ Page({
       })
     })
   },
+  // 排行榜数据
+  /**
+   * 需求分析：
+   *    1.需要根据Idx获取对应的数据
+   *    2.idx的取值范围0-20   需要0-4
+   *    3.需要发送5次请求
+   */
+  indexTopList(){
+    let index = 0
+    let itemArr = []
+    request('/api/toplist/detail').then(res =>{
+      while(index < 4){
+      let topListItem = {name:res.list[index].name,tarcks:res.list[index].tracks}
+      itemArr.push(topListItem)
+      index++
+      }
+      this.setData({
+        topList:itemArr
+      })
+      console.log(this.data.topList)
+    })
+  },
+  // 推荐请求
   indexpersonalizedList(){
     request('/api/personalized/playlist',{limit:20}).then(res =>{
       this.setData({

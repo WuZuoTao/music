@@ -1,0 +1,10 @@
+<!--componemnts/NavHeder/navheader.wxml-->
+  <!-- 推荐歌曲区域 -->
+  <!-- 头部区域 -->
+    <view class="header">
+      <text class="title">{{title}}</text>
+      <view>
+        <text>{{nav}}</text>
+        <text class="moreRight">更多 ></text>
+      </view>
+    </view>
