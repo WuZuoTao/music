@@ -1,3 +1,5 @@
+import request from '../../utils/request'
+
 // pages/personal/index.js
 let startY = 0 // 手指起始的位置
 let moveY = 0  // 手指平移的坐标
@@ -8,19 +10,50 @@ Page({
      * 页面的初始数据
      */
     data: {
-        coverTransform:`translateY(0)`,
+        coverTransform:`translateY(0)`, // CSS3移动
         coveTransition:'',
-        userInfo:{},
-        recentPlayList:[]
+        userInfo:'', // 用户信息
+        recentPlayList:[] // 用户播放记录
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+       this.UserInfoFun()
+       if(this.data.userInfo){
+        this.getRecentPlayListFun(this.data.userInfo.userId)
+       }
     },
-
+    // 获取用户基本信息
+    UserInfoFun(){
+         let userinfo = wx.getStorageSync('userinfo')
+         if(userinfo){
+             // 更新userinfo的转态
+             this.setData({
+                 userInfo:JSON.parse(userinfo)
+             })
+         }
+    },
+    // 获取用户最近播放记录
+    getRecentPlayListFun(userId){
+        let index = 1
+        request('/user/record',{uid:userId,type:0}).then(res =>{
+            let recentPlayList = res.allData.splice(0,20).map(item =>{
+                item.id = index++
+                return item
+            })
+            this.setData({
+                recentPlayList
+            })
+        })
+    },
+    // 跳转到登入页面的回调
+    toLogin(){
+        wx.redirectTo({
+          url: '/pages/login/login',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

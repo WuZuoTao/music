@@ -11,6 +11,7 @@
  *      2. 组件内部保留静态代码
  *      3. 将动态的数据抽取成props参数，由使用者根据自身的情况以标签属性的形式动态传入props数据
  *      4. 一个良好的组件应该设置组件的必要性及数据类型
+ * 
  *          props:{
  *              msg:{
  *               required:true
@@ -24,10 +25,20 @@ import config from './config'
 export default (url,data={},method="GET") =>{
 return new Promise((resolve,reject) =>{
     wx.request({
-        url: config.host + url,
+        url: config.nodeJs + url,
         data,
         method,
+       header:{
+           cookie:wx.getStorageSync('cookies') ? wx.getStorageSync('cookies').filter(item => item.indexOf('MUSIC_U') !== -1)[0]:''
+       },
         success: res =>{
+            // 获取cookies
+            if(data.isLogin){
+                wx.setStorage({
+                    key: 'cookies',
+                    data: res.cookies
+                })
+            }
             resolve(res.data)
         },
         fail:err =>{

@@ -20,7 +20,7 @@ Page({
   },
   // 轮播图API请求
   indexBannerImage(){
-    request('/api/v2/banner/get',{clientType: 'iphone'}).then(res =>{
+    request('/banner/get',{type:1}).then(res =>{
       this.setData({
         bannerImage: res.banners
       })
@@ -36,7 +36,7 @@ Page({
   indexTopList(){
     let index = 0
     let itemArr = []
-    request('/api/toplist/detail').then(res =>{
+    request('/toplist/detail').then(res =>{
       while(index < 4){
       let topListItem = {name:res.list[index].name,tarcks:res.list[index].tracks}
       itemArr.push(topListItem)
@@ -50,7 +50,7 @@ Page({
   },
   // 推荐请求
   indexpersonalizedList(){
-    request('/api/personalized/playlist',{limit:20}).then(res =>{
+    request('/personalized/playlist',{limit:20}).then(res =>{
       this.setData({
         personalizedList:res.result
       })
