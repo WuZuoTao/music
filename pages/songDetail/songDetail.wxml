@@ -1,0 +1,29 @@
+<view class="songDetailContainer">
+    <view class="author">{{song.ar[0].name}}</view>
+    <view class="circle"></view>
+    <image class="needle {{isPlay?'needleIsPlay':''}}" src="/static/images/song/needle.png" ></image>
+    <view class="discContainer {{isPlay?'discAnimation':''}}">
+        <image class="disc" src="/static/images/song/disc.png"></image>
+        <image class="musicImg" src="{{song.al.picUrl}}"></image>
+    </view>
+    <!-- 进度条控制区 -->
+    <view class="progressControl">
+        <text>{{currenTime}}</text>
+        <view class="barControl">
+            <!-- 实施进度条 -->
+            <view class="barControl-jdt" style="width:{{currenWidth + 'rpx'}};">
+                <!-- 小圆球 -->
+                <view class="audir-circle"></view>
+            </view>
+        </view>
+        <text>{{durationTime}}</text>
+    </view>
+    <!-- 底部控制播放区域 -->
+    <view class="musicControl">
+        <text class="iconfont icon-xunhuanbofang"></text>
+        <text class="iconfont icon-prev" bindtap="switchMusic" id="pre"></text>
+        <text class="iconfont {{isPlay?'icon-zanting':'icon-bofang'}}" bindtap="musicControl"></text>
+        <text class="iconfont icon-next" bindtap="switchMusic" id="next"></text>
+        <text class="iconfont icon-danlieliebiao"></text>
+    </view>
+</view>

@@ -45,7 +45,6 @@ Page({
       this.setData({
         topList:itemArr
       })
-      console.log(this.data.topList)
     })
   },
   // 推荐请求
@@ -54,6 +53,12 @@ Page({
       this.setData({
         personalizedList:res.result
       })
+    })
+  },
+  // 每日推荐跳转
+  handleSongBtn(){
+    wx.navigateTo({
+      url: '/pages/recommendSong/recommendSong',
     })
   },
   /**

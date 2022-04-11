@@ -1,5 +1,6 @@
 // pages/recommendSong/recommendSong.js
 import request from '../../utils/request'
+import pubSub from 'pubsub-js'
 Page({
 
     /**
@@ -9,6 +10,7 @@ Page({
         day:'', //天
         month:'',//月
         recommendList : [], // 初始化一个列表数据
+        index : 0 , // 用来标识点击初始化下表的音乐
     },
 
     /**
@@ -20,6 +22,25 @@ Page({
             month:new Date().getMonth() + 1
         })
         this.getUserInfoList()
+
+        // 来自songDetail发布的消息
+        pubSub.subscribe('swichType',(msg,type) =>{
+            let { recommendList, index } = this.data
+                if(type === 'pre'){
+                    // 断言函数
+                    (index === 0) && (index = recommendList.length )
+                    index = index - 1
+                }else{
+                    (index === recommendList.length - 1 ) && (index = -1)
+                    index = index + 1
+                }
+                this.setData({
+                    index
+                })
+            let musicId = recommendList[index].id
+            // 将musicId回传给songDetail
+            pubSub.publish('musicId',musicId)
+        })
     },
     // 请求接口
     getUserInfoList(){
@@ -42,6 +63,17 @@ Page({
             this.setData({
                 recommendList:recommendList.dailySongs
             })
+        })
+    },
+    //跳转至songDetail页面
+    toSongDeteail(e){
+        let {id,index} = e.currentTarget.dataset
+        // 路由跳转传参， 支持的query参数
+        wx.navigateTo({
+          url: '/pages/songDetail/songDetail?id=' + id,
+        })
+        this.setData({
+            index
         })
     },
     /**

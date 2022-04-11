@@ -15,7 +15,7 @@
   </swiper>
   <!-- 导航列表区域 -->
   <view class="navContainer">
-    <view class="navItem">
+    <view class="navItem" bindtap="handleSongBtn">
       <text class="iconfont icon-tuijian"></text>
       <text>每日推荐</text>
     </view>

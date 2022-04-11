@@ -1,4 +1,8 @@
 App({
+  globalData:{
+    isMusicPlay:false,   //标识是否有音乐在播放
+    musicId:'' // 标识音乐ID
+  },
 
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）

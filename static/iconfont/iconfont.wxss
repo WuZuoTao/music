@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3292960 */
-  src: url('//at.alicdn.com/t/font_3292960_nvmrwtonyz.woff2?t=1649317252525') format('woff2'),
-       url('//at.alicdn.com/t/font_3292960_nvmrwtonyz.woff?t=1649317252525') format('woff'),
-       url('//at.alicdn.com/t/font_3292960_nvmrwtonyz.ttf?t=1649317252525') format('truetype');
+  src: url('//at.alicdn.com/t/font_3292960_pqhdrhk123e.woff2?t=1649419409319') format('woff2'),
+       url('//at.alicdn.com/t/font_3292960_pqhdrhk123e.woff?t=1649419409319') format('woff'),
+       url('//at.alicdn.com/t/font_3292960_pqhdrhk123e.ttf?t=1649419409319') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,30 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bofang:before {
+  content: "\e624";
+}
+
+.icon-danlieliebiao:before {
+  content: "\e6e4";
+}
+
+.icon-zanting:before {
+  content: "\e613";
+}
+
+.icon-prev:before {
+  content: "\ea87";
+}
+
+.icon-next:before {
+  content: "\ea8a";
+}
+
+.icon-xunhuanbofang:before {
+  content: "\e6bf";
 }
 
 .icon-02:before {
