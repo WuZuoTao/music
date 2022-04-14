@@ -58,7 +58,7 @@ Page({
   // 每日推荐跳转
   handleSongBtn(){
     wx.navigateTo({
-      url: '/pages/recommendSong/recommendSong',
+      url: '/songPackag/pages/recommendSong/recommendSong',
     })
   },
   /**

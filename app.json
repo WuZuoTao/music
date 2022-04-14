@@ -2,8 +2,6 @@
   "pages":[
     "pages/index/index",
     "pages/search/search",
-    "pages/recommendSong/recommendSong",
-    "pages/songDetail/songDetail",
     "pages/video/index",
     "pages/login/login",
     "pages/personal/index"
@@ -37,5 +35,14 @@
   },
   "style": "v2",
   "requiredBackgroundModes": ["audio"],
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "subPackages": [
+    {
+      "root": "songPackag",
+      "pages": [
+        "pages/recommendSong/recommendSong",
+        "pages/songDetail/songDetail"
+      ]
+    }
+  ]
 }

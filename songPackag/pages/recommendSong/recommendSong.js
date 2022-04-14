@@ -1,5 +1,5 @@
 // pages/recommendSong/recommendSong.js
-import request from '../../utils/request'
+import request from '../../../utils/request'
 import pubSub from 'pubsub-js'
 Page({
 
@@ -70,7 +70,7 @@ Page({
         let {id,index} = e.currentTarget.dataset
         // 路由跳转传参， 支持的query参数
         wx.navigateTo({
-          url: '/pages/songDetail/songDetail?id=' + id,
+          url: '/songPackag/pages/songDetail/songDetail?id=' + id,
         })
         this.setData({
             index
