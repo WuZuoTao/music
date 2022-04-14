@@ -145,6 +145,12 @@ Page({
         // 数据分页的效果 1.后端分页， 2.前端分页
 
     },
+    // 用于跳转搜索页面
+    toSearch(){
+        wx.navigateTo({
+          url: '/pages/search/search',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

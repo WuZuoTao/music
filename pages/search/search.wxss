@@ -15,6 +15,12 @@
     border: 1rpx solid red;
     background: rgba(237, 237, 237, 0.3);
 }
+.header .clear{
+    position: absolute;
+    right: 30rpx;
+    top: 0;
+    z-index: 99;
+}
 .header .cancel{
     width: 100rpx;
     text-align: center;
@@ -56,4 +62,48 @@
     width: 35rpx;
     height: 25rpx;
     margin-left: 10rpx;
+}
+
+/* 搜索内容展示 */
+.searchContent{
+    color: rgba(221, 69, 69, 0.9);
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 24rpx;
+    border-bottom: 1rpx solid #d43c33;
+}
+.searchList .searchItem{
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+}
+.searchList .searchItem .content{
+    flex: 1;
+    margin-left: 20rpx;
+    border: 1rpx solid #eee;
+}
+/* 搜索历史板块 */
+.history{
+    display: flex;
+    flex-wrap: wrap;
+    line-height:50rpx;
+}
+.history .title{
+    font-size: 28rpx;
+}
+ .historyItem{
+     display: inline-block;
+    line-height: 50rpx;
+    font-size: 26rpx;
+    background: #ededed;
+    margin:10rpx 0 0 20rpx;
+    padding: 0 30rpx;
+    border-radius: 20rpx;
+}
+.history .delete{
+    position: absolute;
+    right: 0;
+    line-height: 50rpx;
+    font-size: 36rpx;
+    right: 50rpx;
 }
